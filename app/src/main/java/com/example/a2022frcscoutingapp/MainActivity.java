@@ -45,6 +45,30 @@ import java.util.Objects;
 //ignore all the commented out things :)
 public class MainActivity extends AppCompatActivity {
 
+    private String event_Id;
+
+    private int match_Id;
+
+    private int Team_Number;
+
+    private int scout_Id;
+
+    private int Intake;
+
+    private boolean Tipped;
+
+    private int score_amp_tele;
+
+    private int score_speaker_tele;
+
+    private boolean leave_auto;
+
+    private int score_amp_auto;
+
+    private int score_speaker_auto;
+
+//EVERYTHING UNDER THIS COMMENT IS OLD
+
     public static final String FIlE_NAME_KEY = "standard";
 
     private static RatingBar rDefenseBar;
