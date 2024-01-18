@@ -21,14 +21,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import android.widget.MediaController;
 import android.widget.RatingBar;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.android.material.slider.Slider;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -45,6 +46,11 @@ import java.util.Objects;
 //ignore all the commented out things :)
 public class MainActivity extends AppCompatActivity {
 
+
+    private VideoView vid;
+    private MediaController m;
+    
+    
     private String event_Id;
 
     private int match_Id;
@@ -70,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
     /////new variables
     private int trap;
 
-    private int spotlight;
+    private boolean spotlight;
 
     private boolean melody;
 
@@ -98,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
 
     private String strDefenseRating;
     private static Switch sLeftCommunity;
+    private static Switch sSpotlight;
 
     private View lConstraint;
 
@@ -108,21 +115,13 @@ public class MainActivity extends AppCompatActivity {
 
     private Button bMatchPhase;
     private static Button bTarmac;
-    private Button bMinusTopCube;
-    private Button bMinusTopCone;
+    private Button bMinusSpeaker;
+    private Button bMinusTrap;
+    private Button bMinusAmp;
 
-    private Button bPlusTopCube;
-    private Button bPlusTopCone;
-
-    private Button bPlusMidCube;
-    private Button bMinusMidCube;
-    private Button bPlusMidCone;
-    private Button bMinusMidCone;
-
-    private Button bPlusBotCone;
-    private Button bPlusBotCube;
-    private Button bMinusBotCube;
-    private Button bMinusBotCone;
+    private Button bPlusSpeaker;
+    private Button bPlusTrap;
+    private Button bPlusAmp;
 
     private Button bRobotProblem;
 
@@ -137,15 +136,15 @@ public class MainActivity extends AppCompatActivity {
 
     private Button bSave;
 
-    private TextView tUpperCube, tLowerCube, tUpperCone, tLowerCone, tMidCube, tMidCone, tCollect;
+    private TextView tSpeaker, tAmp, tTrap, tCollect;
 
     private static boolean leftCommunity;
     
     private static int zMatchNumber, zScoutID, zAllianceColor,
             zTeamNumber,
             zMatchPhase, zTarmac,zAutoTarmac,
-            zAutoTopCube, zAutoMidCube, zAutoBotCube, zAutoTopCone, zAutoMidCone, zAutoBotCone,
-            zTopCube, zMidCube, zBotCube, zTopCone, zMidCone, zBotCone,
+            zAutoSpeaker, zAutoTrap, zAutoAmp,
+            zSpeaker, zTrap, zAmp,
             zCollect,
             zType,
 
@@ -196,32 +195,27 @@ public class MainActivity extends AppCompatActivity {
         lConstraint = findViewById(R.id.lConstraint);
 
         // = findViewById(R.id.eMatchNumber);
+
         eScoutID = findViewById(R.id.eScoutID);
         eTeamNumber = findViewById(R.id.eTeamNumber);
         eMatchNumber = findViewById(R.id.eMatchNumber);
-        eDefenseRating = findViewById(R.id.eDefenseRating);
-        rDefenseBar = findViewById(R.id.rDefenseBar);
         //bAllianceColor = findViewById(R.id.bAllianceColor);
         bMatchPhase = findViewById(R.id.bMatchPhase);
         bTarmac = findViewById(R.id.bInitiationLine);
-        bPlusTopCube = findViewById(R.id.bPlusTopCube);
-        bMinusTopCube = findViewById(R.id.bMinusTopCube);
-        bPlusBotCube = findViewById(R.id.bPlusBotCube);
-        bMinusBotCube = findViewById(R.id.bMinusBotCube);
-        bPlusTopCone = findViewById(R.id.bPlusTopCone);
-        bMinusTopCone = findViewById(R.id.bMinusTopCone);
-        bPlusBotCone = findViewById(R.id.bPlusBotCone);
-        bMinusBotCone = findViewById(R.id.bMinusBotCone);
-        bPlusMidCone = findViewById(R.id.bPlusMidCone);
-        bMinusMidCone = findViewById(R.id.bMinusMidCone);
-        bPlusMidCube = findViewById(R.id.bPlusMidCube);
-        bMinusMidCube = findViewById(R.id.bMinusMidCube);
+        bPlusAmp = findViewById(R.id.bPlusSpeaker);
+        bMinusAmp = findViewById(R.id.bMinusAmp);
+        bMinusSpeaker = findViewById(R.id.bMinusSpeaker);
+        bPlusSpeaker = findViewById(R.id.bPlusSpeaker);
+        bPlusTrap = findViewById(R.id.bPlusTrap);
+        bMinusTrap = findViewById(R.id.bMinusTrap);
+
         bRobotProblem = findViewById(R.id.bRobotProblem);
-        bType = findViewById(R.id.bType);
+
         bFoul = findViewById(R.id.bFoul);
         bPlusCollect = findViewById(R.id.bPlusCollect);
         bMinusCollect = findViewById(R.id.bMinusCollect);
         sLeftCommunity = findViewById(R.id.sLeftCommunity);
+        sSpotlight = findViewById(R.id.sSpotlight);
         //sDock = findViewById(R.id.sDock);
         //sEngage = findViewById(R.id.sEngage);
 
@@ -231,12 +225,9 @@ public class MainActivity extends AppCompatActivity {
         bCard = findViewById(R.id.bCard);
         bSave = findViewById(R.id.bSave);
 
-        tUpperCube = findViewById(R.id.tUpperCube);
-        tLowerCube = findViewById(R.id.tLowerCube);
-        tUpperCone = findViewById(R.id.tUpperCone);
-        tLowerCone = findViewById(R.id.tLowerCone);
-        tMidCube = findViewById(R.id.tMidCube);
-        tMidCone = findViewById(R.id.tMidCone);
+        tSpeaker = findViewById(R.id.tSpeaker);
+        tTrap = findViewById(R.id.tTrap);
+        tAmp = findViewById(R.id.tAmp);
         tCollect = findViewById(R.id.tCollect);
 
 
@@ -277,19 +268,13 @@ public class MainActivity extends AppCompatActivity {
         zMatchPhase = 0;
         zTarmac = 0;
         zAutoTarmac = 0;
-        zAutoTopCube = 0;
-        zAutoTopCone = 0;
-        zAutoMidCube = 0;
-        zAutoMidCone = 0;
-        zAutoBotCube = 0;
-        zAutoBotCone = 0;
-        zTopCone = 0;
-        zMidCone = 0;
-        zBotCone = 0;
-        zTopCube = 0;
-        zMidCube = 0;
-        zBotCube = 0;
-        zType = 0;
+        zAutoSpeaker = 0;
+        zAutoAmp = 0;
+        zAutoTrap = 0;
+        zSpeaker = 0;
+        zAmp = 0;
+        zTrap = 0;
+        //zType = 0;
         zRobotProblem = 0;
         zFoul = 0;
         zCard = 0;
@@ -307,20 +292,13 @@ public class MainActivity extends AppCompatActivity {
 
         setButtonEditable(bTarmac, scoringInfoEditable);
 
-        setButtonEditable(bMinusTopCube, scoringInfoEditable);
-        setButtonEditable(bPlusBotCube, scoringInfoEditable);
-        setButtonEditable(bPlusTopCube, scoringInfoEditable);
-        setButtonEditable(bMinusBotCube, scoringInfoEditable);
+        setButtonEditable(bMinusAmp, scoringInfoEditable);
+        setButtonEditable(bPlusAmp, scoringInfoEditable);
+        setButtonEditable(bMinusSpeaker, scoringInfoEditable);
+        setButtonEditable(bPlusSpeaker, scoringInfoEditable);
 
-        setButtonEditable(bMinusTopCone, scoringInfoEditable);
-        setButtonEditable(bMinusBotCone, scoringInfoEditable);
-        setButtonEditable(bPlusTopCone, scoringInfoEditable);
-        setButtonEditable(bPlusBotCone, scoringInfoEditable);
-
-        setButtonEditable(bMinusMidCone, scoringInfoEditable);
-        setButtonEditable(bMinusMidCube, scoringInfoEditable);
-        setButtonEditable(bPlusMidCube, scoringInfoEditable);
-        setButtonEditable(bPlusMidCone, scoringInfoEditable);
+        setButtonEditable(bMinusTrap, scoringInfoEditable);
+        setButtonEditable(bPlusTrap, scoringInfoEditable);
         setButtonEditable(bPlusCollect, scoringInfoEditable);
         setButtonEditable(bMinusCollect, scoringInfoEditable);
 
@@ -337,33 +315,24 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateScoringPortText() {
 
-        int upperDisplayCone, lowerDisplayCone, middleDisplayCone, upperDisplayCube, lowerDisplayCube, middleDisplayCube, collect;
+        int upperDisplaySpeaker, lowerDisplayTrap, middleDisplayAmp,collect;
         if(isAuto){
-            upperDisplayCone = zAutoTopCone;
-            middleDisplayCone = zAutoMidCone;
-            lowerDisplayCone = zAutoBotCone;
-            upperDisplayCube = zAutoTopCube;
-            middleDisplayCube = zAutoMidCube;
-            lowerDisplayCube = zAutoBotCube;
+            upperDisplaySpeaker = zAutoSpeaker;
+            lowerDisplayTrap = zAutoTrap;
+            middleDisplayAmp = zAutoAmp;
             collect = zCollect;
 
         } else {
 
-            upperDisplayCone = zTopCone;
-            middleDisplayCone = zMidCone;
-            lowerDisplayCone = zBotCone;
-            upperDisplayCube = zTopCube;
-            middleDisplayCube = zMidCube;
-            lowerDisplayCube = zBotCube;
+            upperDisplaySpeaker = zSpeaker;
+            lowerDisplayTrap = zTrap;
+            middleDisplayAmp = zAmp;
             collect = zCollect;
             
         }
-        tUpperCone.setText("Top = " + upperDisplayCone);
-        tMidCone.setText("Mid = " + middleDisplayCone);
-        tLowerCone.setText("Bot = " + lowerDisplayCone);
-        tUpperCube.setText("Top = " + upperDisplayCube);
-        tMidCube.setText("Mid = " + middleDisplayCube);
-        tLowerCube.setText("Bot = " + lowerDisplayCube);
+        tSpeaker.setText("Top = " + upperDisplaySpeaker);
+        tTrap.setText("Mid = " + lowerDisplayTrap);
+        tAmp.setText("Bot = " + middleDisplayAmp);
         tCollect.setText("Collect: " + collect);
     }
 
@@ -461,129 +430,68 @@ public class MainActivity extends AppCompatActivity {
         updateScoringPortText();
     }
 
-    public void clickPlusTopCone(View v){
+    public void clickPlusSpeaker(View v){
 
         if(isAuto){
-            zAutoTopCone++;
+            zAutoSpeaker++;
         } else {
-            zTopCone++;
+            zSpeaker++;
         }
 
         updateScoringPortText();
     }
-    public void clickPlusBotCone(View v){
+    public void clickPlusAmp(View v){
 
         if(isAuto){
-            zAutoBotCone++;
+            zAutoAmp++;
         } else {
-            zBotCone++;
-        }
-
-        updateScoringPortText();
-    }
-
-    public void clickMinusTopCone(View v){
-
-        if(isAuto){
-            zAutoTopCone = Math.max( (zAutoTopCone - 1), 0);
-        } else {
-            zTopCone = Math.max( (zTopCone - 1), 0);
+            zAmp++;
         }
 
         updateScoringPortText();
     }
 
-    public void clickMinusBotCone(View v){
+    public void clickMinusSpeaker(View v){
 
         if(isAuto){
-            zAutoBotCone = Math.max( (zAutoBotCone - 1), 0);
+            zAutoSpeaker = Math.max( (zAutoSpeaker - 1), 0);
         } else {
-            zBotCone = Math.max( (zBotCone - 1), 0);
-        }
-
-        updateScoringPortText();
-    }
-    public void clickPlusMidCone(View v){
-
-        if(isAuto){
-            zAutoMidCone++;
-        } else {
-            zMidCone++;
-        }
-
-        updateScoringPortText();
-    }
-    public void clickMinusMidCone(View v){
-
-        if(isAuto){
-            zAutoMidCone = Math.max( (zAutoMidCone - 1), 0);
-        } else {
-            zMidCone = Math.max( (zMidCone - 1), 0);
-        }
-
-        updateScoringPortText();
-    }
-    public void clickPlusTopCube(View v){
-
-        if(isAuto){
-            zAutoTopCube++;
-        } else {
-            zTopCube++;
-        }
-
-        updateScoringPortText();
-    }
-    public void clickPlusMidCube(View v){
-
-        if(isAuto){
-            zAutoMidCube++;
-        } else {
-            zMidCube++;
-        }
-
-        updateScoringPortText();
-    }
-    public void clickPlusBotCube(View v){
-
-        if(isAuto){
-            zAutoBotCube++;
-        } else {
-            zBotCube++;
-        }
-
-        updateScoringPortText();
-    }
-    public void clickMinusTopCube(View v){
-
-        if(isAuto){
-            zAutoTopCube = Math.max( (zAutoTopCube - 1), 0);
-        } else {
-            zTopCube = Math.max( (zTopCube - 1), 0);
-        }
-
-        updateScoringPortText();
-    }
-    public void clickMinusMidCube(View v){
-
-        if(isAuto){
-            zAutoMidCube = Math.max( (zAutoMidCube - 1), 0);
-        } else {
-            zMidCube = Math.max( (zMidCube - 1), 0);
-        }
-
-        updateScoringPortText();
-    }
-    public void clickMinusBotCube(View v){
-
-        if(isAuto){
-            zAutoBotCube = Math.max( (zAutoBotCube - 1), 0);
-        } else {
-            zBotCube = Math.max( (zBotCube - 1), 0);
+            zSpeaker = Math.max( (zSpeaker - 1), 0);
         }
 
         updateScoringPortText();
     }
 
+    public void clickMinusAmp(View v){
+
+        if(isAuto){
+            zAutoAmp = Math.max( (zAutoAmp - 1), 0);
+        } else {
+            zAmp = Math.max( (zAmp - 1), 0);
+        }
+
+        updateScoringPortText();
+    }
+    public void clickPlusTrap(View v){
+
+        if(isAuto){
+            zAutoTrap++;
+        } else {
+            zTrap++;
+        }
+
+        updateScoringPortText();
+    }
+    public void clickMinusTrap(View v){
+
+        if(isAuto){
+            zAutoTrap = Math.max( (zAutoTrap - 1), 0);
+        } else {
+            zTrap = Math.max( (zTrap - 1), 0);
+        }
+
+        updateScoringPortText();
+    }
     //level 0 = low and level 3 = traversal
 
     public void clickMinusCollect(View v){
@@ -608,15 +516,6 @@ public class MainActivity extends AppCompatActivity {
         bRobotProblem.setBackgroundColor(colorGradients[zRobotProblem]);
         bRobotProblem.setText(displayText[zRobotProblem]);
     }
-
-    //public void clicksDock(View v){
-
-   // }
-
-    //public void clicksEngage(View v){
-
-  //  }
-
 
     public void clickFoul(View v){
 
@@ -645,6 +544,18 @@ public class MainActivity extends AppCompatActivity {
                 leftCommunity = false;
             }
             sLeftCommunity.setChecked(leftCommunity);
+        }
+    }
+
+    public void clickSpotlight(View v){
+
+        if(isAuto) {
+            if (spotlight == false) {
+                spotlight = true;
+            } else {
+                spotlight = false;
+            }
+            sSpotlight.setChecked(spotlight);
         }
     }
 
@@ -728,6 +639,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /*public void videoView3(VideoView v)
+    {
+        Uri uri=Uri.parse("www.abc.com/myVid.mp4");
+        VideoView videoView = (VideoView) findViewById(R.id.videoView);
+        videoView.setVideoURI(uri);
+    }*/
     private void writeFile(String fileName) throws IOException {
 
 
@@ -746,28 +663,24 @@ public class MainActivity extends AppCompatActivity {
             writeString(b, "ScoutID");
             writeString(b, "AllianceColor");
             writeString(b, "TeamNumber");
-            writeString(b, "AutoTopCube");
-            writeString(b, "AutoMidCube");
-            writeString(b, "AutoBotCube");
-            writeString(b, "AutoTopCone");
-            writeString(b, "AutoMidCone");
-            writeString(b, "AutoBotCone");
-            writeString(b, "TopCube");
-            writeString(b, "MidCube");
-            writeString(b, "BotCube");
-            writeString(b, "TopCone");
-            writeString(b, "MidCone");
-            writeString(b, "BotCone");
+            writeString(b, "score_amp_auto");
+            writeString(b, "score_speaker_auto");
+            writeString(b, "score_trap_auto");
+            writeString(b, "leave");
+            writeString(b, "score_amp_auto");
+            writeString(b, "score_speaker_tele");
+            writeString(b, "Trap");
+            writeString(b, "Spotlight");
+            writeString(b, "Melody");
             writeString(b, "Climb");
-            writeString(b, "Auto Climb");
             writeString(b, "Collect");
             writeString(b, "Robot Problem");
             writeString(b, "Foul");
             writeString(b, "Card");
             writeString(b, "Left Community");
-            writeString(b, "Rating");
-            writeString(b, "Defense Rating");
-            writeString(b, "Robot Type");
+            //writeString(b, "Rating");
+            //writeString(b, "Defense Rating");
+            //writeString(b, "Robot Type");
             b.append("\n");
 
         }
@@ -778,7 +691,27 @@ public class MainActivity extends AppCompatActivity {
         write(b, zScoutID);
         write(b, zAllianceColor);
         write(b, zTeamNumber);
-        write(b, zAutoTopCube);
+        write(b, zAutoAmp);
+        write(b, zAutoSpeaker);
+        write(b, zAutoTrap);
+        write(b, zAmp);
+        write(b, zSpeaker);
+        write(b, zTrap);
+        writeString(b, displayText[zAutoTarmac]);
+        writeBoolean(b, spotlight);
+        //write(b, zMelody);
+
+
+        write(b, zCollect);
+        writeString(b, displayTextProblem[zRobotProblem]);
+        write(b, zFoul);
+        write(b, zCard);
+        writeBoolean(b, leftCommunity);
+        writeFloat(b, rDefenseBar.getRating());
+        writeString(b, strDefenseRating);
+        writeString(b, displayTypeText[zType]);
+
+        /*write(b, zAutoTopCube);
         write(b, zAutoMidCube);
         write(b, zAutoBotCube);
         write(b, zAutoTopCone);
@@ -793,15 +726,7 @@ public class MainActivity extends AppCompatActivity {
         writeString(b, displayText[zAutoTarmac]);
 
         writeString(b, displayText[zTarmac]);
-
-        write(b, zCollect);
-        writeString(b, displayTextProblem[zRobotProblem]);
-        write(b, zFoul);
-        write(b, zCard);
-        writeBoolean(b, leftCommunity);
-        writeFloat(b, rDefenseBar.getRating());
-        writeString(b, strDefenseRating);
-        writeString(b, displayTypeText[zType]);
+        */
 
         b.append("\n");
         b.close();
