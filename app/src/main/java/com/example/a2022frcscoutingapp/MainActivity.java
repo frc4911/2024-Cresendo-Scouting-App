@@ -96,15 +96,16 @@ public class MainActivity extends AppCompatActivity {
     private boolean no_robot_problem;
     private boolean broken_parts;
     private boolean partially_dead;
-//EVERYTHING UNDER THIS COMMENT IS OLD
+
 
     public static final String FIlE_NAME_KEY = "standard";
 
     private static RatingBar rDefenseBar;
 
     private String strDefenseRating;
-    private static Switch sLeftCommunity;
-    private static Switch sSpotlight;
+    private Switch sLeftCommunity;
+    private Switch sSpotlight;
+    private Switch sMelody;
 
     private View lConstraint;
 
@@ -135,10 +136,11 @@ public class MainActivity extends AppCompatActivity {
     private static Button bType;
 
     private Button bSave;
+    private Button bRoullete1, bRoullete2, bRoullete3, bRoullete4, bRoullete5, bRoullete6;
 
     private TextView tSpeaker, tAmp, tTrap, tCollect;
 
-    private static boolean leftCommunity;
+    private static boolean leftCommunity, zMelody;
     
     private static int zMatchNumber, zScoutID, zAllianceColor,
             zTeamNumber,
@@ -209,6 +211,13 @@ public class MainActivity extends AppCompatActivity {
         bPlusTrap = findViewById(R.id.bPlusTrap);
         bMinusTrap = findViewById(R.id.bMinusTrap);
 
+        bRoullete1 = findViewById(R.id.bRoullete1);
+        bRoullete2 = findViewById(R.id.bRoullete2);
+        bRoullete3 = findViewById(R.id.bRoullete3);
+        bRoullete4 = findViewById(R.id.bRoullete4);
+        bRoullete5 = findViewById(R.id.bRoullete5);
+        bRoullete6 = findViewById(R.id.bRoullete6);
+
         bRobotProblem = findViewById(R.id.bRobotProblem);
 
         bFoul = findViewById(R.id.bFoul);
@@ -216,11 +225,7 @@ public class MainActivity extends AppCompatActivity {
         bMinusCollect = findViewById(R.id.bMinusCollect);
         sLeftCommunity = findViewById(R.id.sLeftCommunity);
         sSpotlight = findViewById(R.id.sSpotlight);
-        //sDock = findViewById(R.id.sDock);
-        //sEngage = findViewById(R.id.sEngage);
-
-        //sLeftCommunity = findViewById(R.id.sLeftCommunity);
-        //sTeleop = findViewById(R.id.sTeleop);
+        sMelody = findViewById(R.id.sMelody);
 
         bCard = findViewById(R.id.bCard);
         bSave = findViewById(R.id.bSave);
@@ -262,7 +267,7 @@ public class MainActivity extends AppCompatActivity {
         newFragment.show(getSupportFragmentManager(), "cones/cubes");
     }
 
-    private static void zeroAllData() {
+    private void zeroAllData() {
 
         zTeamNumber = 0;
         zMatchPhase = 0;
@@ -517,6 +522,10 @@ public class MainActivity extends AppCompatActivity {
         bRobotProblem.setText(displayText[zRobotProblem]);
     }
 
+    public void clickMelody(View v){
+        zMelody = !zMelody;
+        sMelody.setChecked(zMelody);
+        }
     public void clickFoul(View v){
 
         String[] displayText = {"No Foul", "1-2 Fouls", "Too many (3+) Fouls"};
@@ -667,9 +676,9 @@ public class MainActivity extends AppCompatActivity {
             writeString(b, "score_speaker_auto");
             writeString(b, "score_trap_auto");
             writeString(b, "leave");
-            writeString(b, "score_amp_auto");
+            writeString(b, "score_amp_tele");
             writeString(b, "score_speaker_tele");
-            writeString(b, "Trap");
+            writeString(b, "score_trap_tele");
             writeString(b, "Spotlight");
             writeString(b, "Melody");
             writeString(b, "Climb");
@@ -697,19 +706,18 @@ public class MainActivity extends AppCompatActivity {
         write(b, zAmp);
         write(b, zSpeaker);
         write(b, zTrap);
-        writeString(b, displayText[zAutoTarmac]);
         writeBoolean(b, spotlight);
-        //write(b, zMelody);
-
+        writeBoolean(b, zMelody);
+        writeString(b, displayText[zAutoTarmac]);
 
         write(b, zCollect);
         writeString(b, displayTextProblem[zRobotProblem]);
         write(b, zFoul);
         write(b, zCard);
         writeBoolean(b, leftCommunity);
-        writeFloat(b, rDefenseBar.getRating());
-        writeString(b, strDefenseRating);
-        writeString(b, displayTypeText[zType]);
+        //writeFloat(b, rDefenseBar.getRating());
+        //writeString(b, strDefenseRating);
+        //writeString(b, displayTypeText[zType]);
 
         /*write(b, zAutoTopCube);
         write(b, zAutoMidCube);
