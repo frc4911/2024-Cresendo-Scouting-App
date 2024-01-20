@@ -1,8 +1,6 @@
-package com.example.a2022frcscoutingapp;
+package com.example.a2024frcscoutingapp;
 
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;

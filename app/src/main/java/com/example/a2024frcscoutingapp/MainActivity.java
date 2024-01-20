@@ -1,4 +1,4 @@
-package com.example.a2022frcscoutingapp;
+package com.example.a2024frcscoutingapp;
 //idk how to change the file name to 2023 frc
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -100,9 +100,9 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String FIlE_NAME_KEY = "standard";
 
-    private static RatingBar rDefenseBar;
+    // private static RatingBar rDefenseBar;
 
-    private String strDefenseRating;
+    // private String strDefenseRating;
     private Switch sLeftCommunity;
     private Switch sSpotlight;
     private Switch sMelody;
@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText eScoutID;
     private EditText eTeamNumber;
     private EditText eMatchNumber;
-    private static EditText eDefenseRating;
+    //private static EditText eDefenseRating;
 
     private Button bMatchPhase;
     private static Button bTarmac;
@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button bCard;
 
-    private static Button bType;
+    //private Button bType;
 
     private Button bSave;
     private Button bRoullete1, bRoullete2, bRoullete3, bRoullete4, bRoullete5, bRoullete6;
@@ -287,10 +287,10 @@ public class MainActivity extends AppCompatActivity {
         zCollect = 0;
         leftCommunity = false;
         sLeftCommunity.setChecked(leftCommunity);
-        bType.setText("Robot Type");
+        // bType.setText("Robot Type");
         bTarmac.setText("Climb: None");
-        rDefenseBar.setRating(0);
-        eDefenseRating.setText("Defense Rating");
+        //rDefenseBar.setRating(0);
+        //eDefenseRating.setText("Defense Rating");
     }
 
     private void setAllElementEditability() {
@@ -430,8 +430,8 @@ public class MainActivity extends AppCompatActivity {
         String[] displayText = {"Defensive", "Offensive", "Transfer"};
         zType = (zType + 1)%3;
 
-        bType.setBackgroundColor( (zType == 0) ? darkThemeRed : darkThemeGreen);
-        bType.setText(displayText[zType]);
+        //bType.setBackgroundColor( (zType == 0) ? darkThemeRed : darkThemeGreen);
+        //bType.setText(displayText[zType]);
         updateScoringPortText();
     }
 
@@ -609,7 +609,7 @@ public class MainActivity extends AppCompatActivity {
                 zMatchNumber = Integer.parseInt(eMatchNumber.getText().toString());
                 zScoutID = Integer.parseInt(eScoutID.getText().toString());
                 zTeamNumber = Integer.parseInt(eTeamNumber.getText().toString());
-                strDefenseRating = eDefenseRating.getText().toString();
+                //strDefenseRating = eDefenseRating.getText().toString();
 
 
                 writeFile(fileName);
