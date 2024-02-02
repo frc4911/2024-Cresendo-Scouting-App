@@ -61,7 +61,7 @@ public class FileNameDialogFragment extends DialogFragment {
                 .setPositiveButton("Save", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-                        String fileName = (String) eventNameDropdown.getSelectedItem() + "_" + (String) tabletIdDropdown.getSelectedItem() + ".csv";
+                        String fileName = "2024 Cresendo" + (String) eventNameDropdown.getSelectedItem() + "_" + (String) tabletIdDropdown.getSelectedItem() + ".csv";
                         SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPref.edit();
                         editor.putString(MainActivity.FIlE_NAME_KEY, fileName);
