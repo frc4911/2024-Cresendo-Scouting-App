@@ -42,6 +42,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Random;
 
 //ignore all the commented out things :)
 public class MainActivity extends AppCompatActivity {
@@ -178,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int secretPurple = Color.argb(254, 179, 136, 255); //?
 
 
-    private String[] climbDisplayText = {"No Climb", "Touching", "Leveled", "In Community"};
+    private String[] climbDisplayText = {"No Climb", "Climb", "Park"};
 
     private Map<Integer, List<String>> matchMap = new HashMap<>();
 
@@ -347,19 +348,46 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public int Roulette()
+    {
+        final int random = new Random().nextInt((6)+1);
+        return random;
+    }
+    private void noMoreFun()
+    {
+        bRoullete1.setVisibility(View.GONE);
+        bRoullete2.setVisibility(View.GONE);
+        bRoullete3.setVisibility(View.GONE);
+        bRoullete4.setVisibility(View.GONE);
+        bRoullete5.setVisibility(View.GONE);
+        bRoullete6.setVisibility(View.GONE);
+    }
+
+    private void moreFun()
+    {
+        bRoullete1.setVisibility(View.VISIBLE);
+        bRoullete2.setVisibility(View.VISIBLE);
+        bRoullete3.setVisibility(View.VISIBLE);
+        bRoullete4.setVisibility(View.VISIBLE);
+        bRoullete5.setVisibility(View.VISIBLE);
+        bRoullete6.setVisibility(View.VISIBLE);
+    }
+
 
     public void clickMatchPhase(View v){
 
         zMatchPhase++;
-
         String displayText = "Start Match";
         int displayColor = darkThemeRed;
+        moreFun();
+
         if(zMatchPhase > 2) {
             zMatchPhase = 1;
         }
 
         switch (zMatchPhase){
             case 1:
+                noMoreFun();
                 displayText = "Autonomous";
                 displayColor = darkThemeBlue;
                 scoringInfoEditable  = true;
@@ -374,6 +402,7 @@ public class MainActivity extends AppCompatActivity {
 
 
             case 2:
+                noMoreFun();
                 displayText = "Tele-Operated";
                 displayColor = darkThemeGreen;
                 scoringInfoEditable  = true;
@@ -577,6 +606,50 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void clickRoulette1(View v)
+    {
+        if(Roulette() == 1)
+        {
+            bRoullete1.setBackgroundColor(darkThemeRed);
+        }
+    }
+
+    public void clickRoulette2(View v)
+    {
+        if(Roulette() == 1)
+        {
+            bRoullete2.setBackgroundColor(darkThemeRed);
+        }
+    }
+    public void clickRoulette3(View v)
+    {
+        if(Roulette() == 1)
+        {
+            bRoullete3.setBackgroundColor(darkThemeRed);
+        }
+    }
+    public void clickRoulette4(View v)
+    {
+        if(Roulette() == 1)
+        {
+            bRoullete4.setBackgroundColor(darkThemeRed);
+        }
+    }
+    public void clickRoulette5(View v)
+    {
+        if(Roulette() == 1)
+        {
+            bRoullete5.setBackgroundColor(darkThemeRed);
+        }
+    }
+
+    public void clickRoulette6(View v)
+    {
+        if(Roulette() == 1)
+        {
+            bRoullete6.setBackgroundColor(darkThemeRed);
+        }
+    }
     public void clickSave(View v) throws IOException{
 
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
@@ -693,7 +766,7 @@ public class MainActivity extends AppCompatActivity {
             b.append("\n");
 
         }
-        String[] displayText = {"No Climb", "Touching", "Leveled", "In Community"};
+        String[] displayText = {"No Climb", "Park", "Climb"};
         String[] displayTypeText = {"Offensive", "Transfer", "Defensive"};
         String[] displayTextProblem = {"No Robot Problem", "Broken Parts", "Dead Partially", "Dead All Match"};
         write(b, zMatchNumber);

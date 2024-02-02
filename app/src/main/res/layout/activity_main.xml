@@ -19,7 +19,7 @@
             android:layout_height="75dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="41dp"
-            android:background="#97CCFF90"
+            android:background="#978AFF00"
             android:onClick="clickFoul"
             android:text="No Foul"
             android:textColor="#FFFFFF"
@@ -31,7 +31,7 @@
             android:id="@+id/bRobotProblem"
             android:layout_width="240dp"
             android:layout_height="75dp"
-            android:background="#97CCFF90"
+            android:background="#978AFF00"
             android:onClick="clickRobotProblem"
             android:text="No Robot Problem"
             android:textColor="#FFFFFF"
@@ -46,7 +46,7 @@
             android:layout_height="0dp"
             android:layout_marginTop="9dp"
             android:layout_marginEnd="24dp"
-            android:background="#97CCFF90"
+            android:background="#978AFF00"
             android:onClick="clickSave"
             android:text="Press 5 times to save / reset"
             android:textColor="#FFFFFF"
@@ -59,7 +59,7 @@
             android:layout_width="150dp"
             android:layout_height="75dp"
             android:layout_marginEnd="24dp"
-            android:background="#97CCFF90"
+            android:background="#978AFF00"
             android:onClick="clickCard"
             android:text="No Card"
             android:textColor="#FFFFFF"
@@ -68,28 +68,11 @@
             app:layout_constraintTop_toTopOf="@+id/bRobotProblem" />
 
         <EditText
-            android:id="@+id/eScoutID"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="4dp"
-            android:backgroundTint="#CDFFFFFF"
-            android:ems="10"
-            android:fontFamily="sans-serif-black"
-            android:gravity="center"
-            android:hint="Tablet ID"
-            android:inputType="number"
-            android:textColor="#CDFFFFFF"
-            android:textColorHint="#CDFFFFFF"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
             android:id="@+id/eMatchNumber"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="48dp"
+            android:layout_width="260dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
             android:backgroundTint="#CDFFFFFF"
             android:ems="10"
             android:fontFamily="sans-serif-black"
@@ -102,11 +85,28 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/eTeamNumber"
-            android:layout_width="0dp"
-            android:layout_height="45dp"
+            android:id="@+id/eScoutID"
+            android:layout_width="260dp"
+            android:layout_height="60dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
+            android:backgroundTint="#CDFFFFFF"
+            android:ems="10"
+            android:fontFamily="sans-serif-black"
+            android:gravity="center"
+            android:hint="Tablet ID"
+            android:inputType="number"
+            android:textColor="#CDFFFFFF"
+            android:textColorHint="#CDFFFFFF"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/eTeamNumber"
+            android:layout_width="542dp"
+            android:layout_height="69dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
             android:backgroundTint="#CDFFFFFF"
             android:ems="10"
@@ -120,35 +120,34 @@
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Ln1" />
+            app:layout_constraintTop_toBottomOf="@+id/eMatchNumber" />
 
         <Button
             android:id="@+id/bMatchPhase"
-            android:layout_width="240dp"
+            android:layout_width="542dp"
             android:layout_height="60dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="19dp"
             android:background="@color/purple_500"
             android:onClick="clickMatchPhase"
             android:text="Start Match"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sLeftCommunity" />
+            app:layout_constraintTop_toBottomOf="@+id/eTeamNumber" />
 
         <Button
             android:id="@+id/bInitiationLine"
             android:layout_width="240dp"
             android:layout_height="60dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="24dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="32dp"
             android:background="@color/purple_200"
             android:onClick="clickTarmac"
             android:text="Climb: None"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sSpotlight" />
+            app:layout_constraintTop_toBottomOf="@+id/bMatchPhase" />
 
         <TextView
             android:id="@+id/tCollect"
@@ -198,7 +197,9 @@
             android:layout_height="80dp"
             android:layout_marginStart="12dp"
             android:background="#000000"
+            android:clickable="true"
             android:gravity="center"
+            android:onClick="clickRoulette1"
             android:text="1"
             android:textColor="#FFFFFF"
             android:textSize="40sp"
@@ -209,9 +210,9 @@
             android:id="@+id/bRoullete3"
             android:layout_width="60dp"
             android:layout_height="80dp"
-            android:layout_marginStart="2dp"
             android:background="#000000"
             android:gravity="center"
+            android:onClick="clickRoulette3"
             android:text="3"
             android:textColor="#FFFFFF"
             android:textSize="40sp"
@@ -224,6 +225,7 @@
             android:layout_height="80dp"
             android:background="#000000"
             android:gravity="center"
+            android:onClick="clickRoulette2"
             android:text="2"
             android:textColor="#FFFFFF"
             android:textSize="40sp"
@@ -236,6 +238,7 @@
             android:layout_height="80dp"
             android:background="#000000"
             android:gravity="center"
+            android:onClick="clickRoulette4"
             android:text="4"
             android:textColor="#FFFFFF"
             android:textSize="40sp"
@@ -248,6 +251,7 @@
             android:layout_height="80dp"
             android:background="#000000"
             android:gravity="center"
+            android:onClick="clickRoulette5"
             android:text="5"
             android:textColor="#FFFFFF"
             android:textSize="40sp"
@@ -260,6 +264,7 @@
             android:layout_height="80dp"
             android:background="#000000"
             android:gravity="center"
+            android:onClick="clickRoulette6"
             android:text="6"
             android:textColor="#FFFFFF"
             android:textSize="40sp"
@@ -298,14 +303,14 @@
             android:layout_width="100dp"
             android:layout_height="80dp"
             android:layout_marginStart="68dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:background="#48B8C6"
             android:onClick="clickMinusSpeaker"
             android:text="-"
             android:textColor="@color/white"
             android:textSize="40sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bMatchPhase" />
+            app:layout_constraintTop_toBottomOf="@+id/sSpotlight" />
 
         <Button
             android:id="@+id/bMinusAmp"
@@ -337,7 +342,7 @@
             android:id="@+id/bPlusTrap"
             android:layout_width="100dp"
             android:layout_height="80dp"
-            android:layout_marginTop="81dp"
+            android:layout_marginTop="80dp"
             android:layout_marginEnd="68dp"
             android:background="#FBBD00"
             android:gravity="center"
@@ -392,28 +397,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/bInitiationLine" />
 
-        <TextView
-            android:id="@+id/Ln1"
-            android:layout_width="0dp"
-            android:layout_height="6dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:background="#FFFFFF"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/eScoutID" />
-
         <Switch
             android:id="@+id/sLeftCommunity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="96dp"
             android:onClick="clickCommunity"
             android:text="Left Community"
+            android:textColor="#FFFFFF"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/eTeamNumber" />
 
@@ -421,13 +413,13 @@
             android:id="@+id/sMelody"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginStart="78dp"
+            android:layout_marginTop="6dp"
             android:onClick="clickMelody"
             android:text="Melody"
-            app:layout_constraintEnd_toStartOf="@+id/sSpotlight"
-            app:layout_constraintHorizontal_bias="0.7"
+            android:textColor="#FFFFFF"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/eTeamNumber" />
+            app:layout_constraintTop_toBottomOf="@+id/bMatchPhase" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline2"
@@ -439,12 +431,13 @@
         <Switch
             android:id="@+id/sSpotlight"
             android:layout_width="121dp"
-            android:layout_height="33dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="24dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="52dp"
+            android:layout_marginTop="4dp"
             android:text="Spotlight"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/eTeamNumber" />
+            android:textColor="#FFFFFF"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sLeftCommunity" />
 
         <VideoView
             android:id="@+id/videoView4"
