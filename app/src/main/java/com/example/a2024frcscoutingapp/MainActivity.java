@@ -766,7 +766,7 @@ public class MainActivity extends AppCompatActivity {
             b.append("\n");
 
         }
-        String[] displayText = {"No Climb", "Touching", "Leveled", "In Community"};
+        String[] displayText = {"No Climb", "Park", "Climb"};
         String[] displayTypeText = {"Offensive", "Transfer", "Defensive"};
         String[] displayTextProblem = {"No Robot Problem", "Broken Parts", "Dead Partially", "Dead All Match"};
         write(b, zMatchNumber);
