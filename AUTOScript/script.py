@@ -4,7 +4,8 @@ import pandas as pd
 
 
 # ADB DRIVER, PANDAS, OS REQUIRED
-
+# One device at a time
+# enable debug mode on the device
 
 device_path = '/storage/emulated/0'
 local_path = './csv_files' 
