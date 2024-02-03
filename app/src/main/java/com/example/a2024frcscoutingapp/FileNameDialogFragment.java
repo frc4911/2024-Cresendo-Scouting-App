@@ -1,4 +1,4 @@
-package com.example.a2022frcscoutingapp;
+package com.example.a2024frcscoutingapp;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -16,16 +16,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.thebluealliance.api.v3.TBA;
-
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Dictionary;
 import java.util.List;
-import java.util.Map;
 
 public class FileNameDialogFragment extends DialogFragment {
     @NonNull
@@ -69,7 +61,7 @@ public class FileNameDialogFragment extends DialogFragment {
                 .setPositiveButton("Save", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-                        String fileName = (String) eventNameDropdown.getSelectedItem() + "_" + (String) tabletIdDropdown.getSelectedItem() + ".csv";
+                        String fileName = "2024 Cresendo" + (String) eventNameDropdown.getSelectedItem() + "_" + (String) tabletIdDropdown.getSelectedItem() + ".csv";
                         SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPref.edit();
                         editor.putString(MainActivity.FIlE_NAME_KEY, fileName);

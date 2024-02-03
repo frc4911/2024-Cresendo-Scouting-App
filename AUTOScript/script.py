@@ -1,6 +1,11 @@
 import os
 import pandas as pd
 
+
+
+# ADB DRIVER, PANDAS, OS REQUIRED
+
+
 device_path = '/storage/emulated/0'
 local_path = './csv_files' 
 current_directory = os.getcwd()

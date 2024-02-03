@@ -10,47 +10,43 @@
         android:id="@+id/lConstraint"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#C8000000"
+        android:background="#3D0747"
         tools:context=".MainActivity">
 
         <Button
             android:id="@+id/bFoul"
             android:layout_width="150dp"
-            android:layout_height="60dp"
-            android:layout_marginEnd="2dp"
-            android:layout_marginBottom="8dp"
-            android:background="#97CCFF90"
+            android:layout_height="75dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="41dp"
+            android:background="#978AFF00"
             android:onClick="clickFoul"
             android:text="No Foul"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
-            app:layout_constraintBottom_toTopOf="@+id/bSave"
-            app:layout_constraintEnd_toStartOf="@+id/bRobotProblem"
-            app:layout_constraintHorizontal_bias="0.727"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
         <Button
             android:id="@+id/bRobotProblem"
             android:layout_width="240dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="556dp"
-            android:background="#97CCFF90"
+            android:layout_height="75dp"
+            android:background="#978AFF00"
             android:onClick="clickRobotProblem"
             android:text="No Robot Problem"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tPowerPort" />
+            app:layout_constraintEnd_toStartOf="@+id/bCard"
+            app:layout_constraintStart_toEndOf="@+id/bFoul"
+            app:layout_constraintTop_toTopOf="@+id/bFoul" />
 
         <Button
             android:id="@+id/bSave"
-            android:layout_width="550sp"
+            android:layout_width="553sp"
             android:layout_height="0dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="9dp"
             android:layout_marginEnd="24dp"
-            android:background="#97CCFF90"
+            android:background="#978AFF00"
             android:onClick="clickSave"
             android:text="Press 5 times to save / reset"
             android:textColor="#FFFFFF"
@@ -61,67 +57,22 @@
         <Button
             android:id="@+id/bCard"
             android:layout_width="150dp"
-            android:layout_height="60dp"
-            android:layout_marginBottom="8dp"
-            android:background="#97CCFF90"
+            android:layout_height="75dp"
+            android:layout_marginEnd="24dp"
+            android:background="#978AFF00"
             android:onClick="clickCard"
             android:text="No Card"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
-            app:layout_constraintBottom_toTopOf="@+id/bSave"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.405"
-            app:layout_constraintStart_toEndOf="@+id/bRobotProblem" />
-
-        <Button
-            android:id="@+id/bMinusTopCone"
-            android:layout_width="50dp"
-            android:layout_height="80dp"
-            android:layout_marginStart="468dp"
-            android:background="#FF5722"
-            android:onClick="clickMinusTopCone"
-            android:text="-"
-            android:textColor="@color/white"
-            android:textSize="40sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/bPlusTopCone" />
-
-        <Button
-            android:id="@+id/bMinusTopCube"
-            android:layout_width="50dp"
-            android:layout_height="80dp"
-            android:layout_marginStart="32dp"
-            android:background="#9C27B0"
-            android:onClick="clickMinusTopCube"
-            android:text="-"
-            android:textColor="@color/white"
-            android:textSize="40sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/bPlusTopCone" />
-
-        <EditText
-            android:id="@+id/eScoutID"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="4dp"
-            android:backgroundTint="#CDFFFFFF"
-            android:ems="10"
-            android:fontFamily="sans-serif-black"
-            android:gravity="center"
-            android:hint="Tablet ID"
-            android:inputType="number"
-            android:textColor="#CDFFFFFF"
-            android:textColorHint="#CDFFFFFF"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/bRobotProblem" />
 
         <EditText
             android:id="@+id/eMatchNumber"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="48dp"
+            android:layout_width="260dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
             android:backgroundTint="#CDFFFFFF"
             android:ems="10"
             android:fontFamily="sans-serif-black"
@@ -134,11 +85,28 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/eTeamNumber"
-            android:layout_width="0dp"
-            android:layout_height="45dp"
+            android:id="@+id/eScoutID"
+            android:layout_width="260dp"
+            android:layout_height="60dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
+            android:backgroundTint="#CDFFFFFF"
+            android:ems="10"
+            android:fontFamily="sans-serif-black"
+            android:gravity="center"
+            android:hint="Tablet ID"
+            android:inputType="number"
+            android:textColor="#CDFFFFFF"
+            android:textColorHint="#CDFFFFFF"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/eTeamNumber"
+            android:layout_width="542dp"
+            android:layout_height="69dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
             android:backgroundTint="#CDFFFFFF"
             android:ems="10"
@@ -152,429 +120,354 @@
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Ln1" />
+            app:layout_constraintTop_toBottomOf="@+id/eMatchNumber" />
 
-        <TextView
-            android:id="@+id/tAuto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:fontFamily="sans-serif-black"
-            android:text="Scoring"
-            android:textColor="#CDFFFFFF"
+        <Button
+            android:id="@+id/bMatchPhase"
+            android:layout_width="542dp"
+            android:layout_height="60dp"
+            android:background="@color/purple_500"
+            android:onClick="clickMatchPhase"
+            android:text="Start Match"
+            android:textColor="#FFFFFF"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/eTeamNumber" />
 
-        <TextView
-            android:id="@+id/tPowerPort"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="52dp"
-            android:fontFamily="sans-serif-black"
-            android:text="Cone"
-            android:textColor="#CDFFFFFF"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bInitiationLine" />
-
-        <TextView
-            android:id="@+id/tPowerPort3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="56dp"
-            android:layout_marginTop="16dp"
-            android:fontFamily="sans-serif-black"
-            android:text="Cube"
-            android:textColor="#CDFFFFFF"
-            android:textSize="24sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bMatchPhase" />
-
-        <TextView
-            android:id="@+id/tPowerPort2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:fontFamily="sans-serif-black"
-            android:text="Scoring"
-            android:textColor="#CDFFFFFF"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.501"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bInitiationLine" />
-
-        <Button
-            android:id="@+id/bMatchPhase"
-            android:layout_width="240dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:background="#97FF8A80"
-            android:onClick="clickMatchPhase"
-            android:text="Start Match"
-            android:textColor="#FFFFFF"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="@+id/tAuto"
-            app:layout_constraintHorizontal_bias="0.25"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tAuto" />
-
         <Button
             android:id="@+id/bInitiationLine"
             android:layout_width="240dp"
             android:layout_height="60dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:background="@color/purple_500"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="32dp"
+            android:background="@color/purple_200"
             android:onClick="clickTarmac"
             android:text="Climb: None"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.75"
-            app:layout_constraintStart_toStartOf="@+id/tAuto"
-            app:layout_constraintTop_toBottomOf="@+id/tAuto" />
-
-        <Button
-            android:id="@+id/bType"
-            android:layout_width="240dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="76dp"
-            android:background="@color/purple_500"
-            android:onClick="clickType"
-            android:text="Robot Type"
-            android:textColor="#FFFFFF"
-            android:textSize="24sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bPlusBotCube" />
-
-        <Button
-            android:id="@+id/bPlusTopCone"
-            android:layout_width="50dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="32dp"
-            android:background="#FF5722"
-            android:gravity="center"
-            android:onClick="clickPlusTopCone"
-            android:text="+"
-            android:textColor="#FFFFFF"
-            android:textSize="40sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tPowerPort" />
-
-        <Button
-            android:id="@+id/bPlusTopCube"
-            android:layout_width="50dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="468dp"
-            android:background="#9C27B0"
-            android:gravity="center"
-            android:onClick="clickPlusTopCube"
-            android:text="+"
-            android:textColor="#FFFFFF"
-            android:textSize="40sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tPowerPort" />
-
-        <TextView
-            android:id="@+id/tUpperCone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:fontFamily="sans-serif-black"
-            android:text="Top: 0"
-            android:textColor="#CDFFFFFF"
-            android:textSize="36sp"
-            app:layout_constraintBottom_toBottomOf="@+id/bPlusTopCone"
-            app:layout_constraintEnd_toStartOf="@+id/bPlusTopCone"
-            app:layout_constraintHorizontal_bias="0.74"
-            app:layout_constraintStart_toEndOf="@+id/bMinusTopCube"
-            app:layout_constraintTop_toTopOf="@+id/bPlusTopCone"
-            app:layout_constraintVertical_bias="0.483" />
-
-        <TextView
-            android:id="@+id/tUpperCube"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:fontFamily="sans-serif-black"
-            android:text="Top: 0"
-            android:textColor="#CDFFFFFF"
-            android:textSize="36sp"
-            app:layout_constraintBottom_toBottomOf="@+id/bPlusTopCone"
-            app:layout_constraintEnd_toStartOf="@+id/bPlusTopCone"
-            app:layout_constraintHorizontal_bias="0.265"
-            app:layout_constraintStart_toEndOf="@+id/bMinusTopCube"
-            app:layout_constraintTop_toTopOf="@+id/bPlusTopCone"
-            app:layout_constraintVertical_bias="0.483" />
-
-        <Button
-            android:id="@+id/bMinusMidCone"
-            android:layout_width="50dp"
-            android:layout_height="80dp"
-            android:background="#FF5722"
-            android:onClick="clickMinusMidCone"
-            android:text="-"
-            android:textColor="#FFFFFF"
-            android:textSize="40sp"
-            app:layout_constraintEnd_toStartOf="@+id/bPlusMidCone"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/tMidCone"
-            app:layout_constraintTop_toBottomOf="@+id/bMinusTopCone" />
-
-        <TextView
-            android:id="@+id/tMidCone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:fontFamily="sans-serif-black"
-            android:text="Mid: 0"
-            android:textColor="#CDFFFFFF"
-            android:textSize="36sp"
-            app:layout_constraintEnd_toStartOf="@+id/bMinusBotCone"
-            app:layout_constraintHorizontal_bias="0.861"
-            app:layout_constraintStart_toEndOf="@+id/bMinusBotCube"
-            app:layout_constraintTop_toBottomOf="@+id/tUpperCone" />
-
-        <TextView
-            android:id="@+id/tMidCube"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:fontFamily="sans-serif-black"
-            android:text="Mid: 0"
-            android:textColor="#CDFFFFFF"
-            android:textSize="36sp"
-            app:layout_constraintEnd_toStartOf="@+id/bMinusBotCone"
-            app:layout_constraintHorizontal_bias="0.307"
-            app:layout_constraintStart_toEndOf="@+id/bMinusBotCube"
-            app:layout_constraintTop_toBottomOf="@+id/tUpperCube" />
-
-        <Button
-            android:id="@+id/bPlusBotCone"
-            android:layout_width="50dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="80dp"
-            android:layout_marginEnd="32dp"
-            android:background="#FF5722"
-            android:gravity="center"
-            android:onClick="clickPlusBotCone"
-            android:text="+"
-            android:textColor="#FFFFFF"
-            android:textSize="40sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bPlusTopCone" />
-
-        <TextView
-            android:id="@+id/tLowerCube"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="112dp"
-            android:fontFamily="sans-serif-black"
-            android:text="Bot: 0"
-            android:textColor="#CDFFFFFF"
-            android:textSize="36sp"
-            app:layout_constraintEnd_toStartOf="@+id/bMinusBotCone"
-            app:layout_constraintHorizontal_bias="0.307"
-            app:layout_constraintStart_toEndOf="@+id/bMinusBotCube"
-            app:layout_constraintTop_toBottomOf="@+id/tUpperCube" />
+            app:layout_constraintTop_toBottomOf="@+id/bMatchPhase" />
 
         <TextView
             android:id="@+id/tCollect"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="28dp"
+            android:layout_marginTop="56dp"
             android:fontFamily="sans-serif-black"
             android:text="Collect: 0"
             android:textColor="#CDFFFFFF"
             android:textSize="36sp"
-            app:layout_constraintEnd_toStartOf="@+id/bMinusCollect"
-            app:layout_constraintTop_toBottomOf="@+id/bType" />
-
-        <Button
-            android:id="@+id/bMinusBotCone"
-            android:layout_width="50dp"
-            android:layout_height="80dp"
-            android:layout_marginStart="468dp"
-            android:background="#FF5722"
-            android:onClick="clickMinusBotCone"
-            android:text="-"
-            android:textColor="#FFFFFF"
-            android:textSize="40sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/bPlusBotCube" />
-
-        <TextView
-            android:id="@+id/tLowerCone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="112dp"
-            android:fontFamily="sans-serif-black"
-            android:text="Bot: 0"
-            android:textColor="#CDFFFFFF"
-            android:textSize="36sp"
-            app:layout_constraintEnd_toStartOf="@+id/bMinusBotCone"
-            app:layout_constraintHorizontal_bias="0.861"
-            app:layout_constraintStart_toEndOf="@+id/bMinusBotCube"
-            app:layout_constraintTop_toBottomOf="@+id/tUpperCone" />
-
-        <Button
-            android:id="@+id/bMinusBotCube"
-            android:layout_width="50dp"
-            android:layout_height="80dp"
-            android:layout_marginStart="32dp"
-            android:background="#9C27B0"
-            android:onClick="clickMinusBotCube"
-            android:text="-"
-            android:textColor="#FFFFFF"
-            android:textSize="40sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/bPlusBotCube" />
+            app:layout_constraintEnd_toStartOf="@+id/bPlusCollect"
+            app:layout_constraintStart_toEndOf="@+id/bMinusCollect"
+            app:layout_constraintTop_toBottomOf="@+id/tTrap" />
 
         <Button
             android:id="@+id/bMinusCollect"
-            android:layout_width="50dp"
+            android:layout_width="100dp"
             android:layout_height="80dp"
-            android:layout_marginTop="13dp"
-            android:layout_marginEnd="-80dp"
+            android:layout_marginStart="68dp"
+            android:layout_marginTop="30dp"
             android:background="#009688"
             android:onClick="clickMinusCollect"
             android:text="-"
             android:textColor="#FFFFFF"
             android:textSize="40sp"
-            app:layout_constraintEnd_toEndOf="@+id/bFoul"
-            app:layout_constraintTop_toBottomOf="@+id/bType" />
-
-        <Button
-            android:id="@+id/bPlusBotCube"
-            android:layout_width="50dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="80dp"
-            android:layout_marginEnd="468dp"
-            android:background="#9C27B0"
-            android:gravity="center"
-            android:onClick="clickPlusBotCube"
-            android:text="+"
-            android:textColor="#FFFFFF"
-            android:textSize="40sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bPlusTopCone" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bMinusTrap" />
 
         <Button
             android:id="@+id/bPlusCollect"
-            android:layout_width="50dp"
+            android:layout_width="100dp"
             android:layout_height="80dp"
-            android:layout_marginStart="52dp"
-            android:layout_marginTop="13dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="68dp"
             android:background="#009688"
             android:gravity="center"
             android:onClick="clickPlusCollect"
             android:text="+"
             android:textColor="#FFFFFF"
             android:textSize="40sp"
-            app:layout_constraintStart_toStartOf="@+id/bMinusCollect"
-            app:layout_constraintTop_toBottomOf="@+id/bType" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bPlusTrap" />
 
         <Button
-            android:id="@+id/bPlusMidCone"
-            android:layout_width="50dp"
+            android:id="@+id/bRoullete1"
+            android:layout_width="60dp"
             android:layout_height="80dp"
-            android:background="#FF5722"
+            android:layout_marginStart="12dp"
+            android:background="#000000"
+            android:clickable="true"
             android:gravity="center"
-            android:onClick="clickPlusMidCone"
-            android:text="+"
+            android:onClick="clickRoulette1"
+            android:text="1"
             android:textColor="#FFFFFF"
             android:textSize="40sp"
-            app:layout_constraintStart_toStartOf="@+id/bPlusBotCone"
-            app:layout_constraintTop_toBottomOf="@+id/bPlusTopCone" />
+            app:layout_constraintBottom_toBottomOf="@+id/imageView"
+            app:layout_constraintStart_toEndOf="@+id/imageView" />
 
         <Button
-            android:id="@+id/bMinusMidCube"
-            android:layout_width="50dp"
+            android:id="@+id/bRoullete3"
+            android:layout_width="60dp"
             android:layout_height="80dp"
-            android:background="#9C27B0"
-            android:onClick="clickMinusMidCube"
+            android:background="#000000"
+            android:gravity="center"
+            android:onClick="clickRoulette3"
+            android:text="3"
+            android:textColor="#FFFFFF"
+            android:textSize="40sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView"
+            app:layout_constraintStart_toEndOf="@+id/bRoullete2" />
+
+        <Button
+            android:id="@+id/bRoullete2"
+            android:layout_width="60dp"
+            android:layout_height="80dp"
+            android:background="#000000"
+            android:gravity="center"
+            android:onClick="clickRoulette2"
+            android:text="2"
+            android:textColor="#FFFFFF"
+            android:textSize="40sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView"
+            app:layout_constraintStart_toEndOf="@+id/bRoullete1" />
+
+        <Button
+            android:id="@+id/bRoullete4"
+            android:layout_width="60dp"
+            android:layout_height="80dp"
+            android:background="#000000"
+            android:gravity="center"
+            android:onClick="clickRoulette4"
+            android:text="4"
+            android:textColor="#FFFFFF"
+            android:textSize="40sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView"
+            app:layout_constraintStart_toEndOf="@+id/bRoullete3" />
+
+        <Button
+            android:id="@+id/bRoullete5"
+            android:layout_width="60dp"
+            android:layout_height="80dp"
+            android:background="#000000"
+            android:gravity="center"
+            android:onClick="clickRoulette5"
+            android:text="5"
+            android:textColor="#FFFFFF"
+            android:textSize="40sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView"
+            app:layout_constraintStart_toEndOf="@+id/bRoullete4" />
+
+        <Button
+            android:id="@+id/bRoullete6"
+            android:layout_width="60dp"
+            android:layout_height="80dp"
+            android:background="#000000"
+            android:gravity="center"
+            android:onClick="clickRoulette6"
+            android:text="6"
+            android:textColor="#FFFFFF"
+            android:textSize="40sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView"
+            app:layout_constraintStart_toEndOf="@+id/bRoullete5" />
+
+        <TextView
+            android:id="@+id/tSpeaker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:clickable="true"
+            android:fontFamily="sans-serif-black"
+            android:text="Speaker: 0"
+            android:textColor="#CDFFFFFF"
+            android:textSize="36sp"
+            app:layout_constraintEnd_toStartOf="@+id/bPlusSpeaker"
+            app:layout_constraintStart_toEndOf="@+id/bMinusSpeaker"
+            app:layout_constraintTop_toTopOf="@+id/bMinusSpeaker" />
+
+        <TextView
+            android:id="@+id/tTrap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:fontFamily="sans-serif-black"
+            android:text="Trap: 0"
+            android:textColor="#CDFFFFFF"
+            android:textSize="36sp"
+            app:layout_constraintEnd_toStartOf="@+id/bPlusTrap"
+            app:layout_constraintStart_toEndOf="@+id/bMinusTrap"
+            app:layout_constraintTop_toBottomOf="@+id/tAmp" />
+
+        <Button
+            android:id="@+id/bMinusSpeaker"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="68dp"
+            android:layout_marginTop="10dp"
+            android:background="#48B8C6"
+            android:onClick="clickMinusSpeaker"
+            android:text="-"
+            android:textColor="@color/white"
+            android:textSize="40sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sSpotlight" />
+
+        <Button
+            android:id="@+id/bMinusAmp"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="68dp"
+            android:background="#FF48B8C6"
+            android:onClick="clickMinusAmp"
             android:text="-"
             android:textColor="#FFFFFF"
             android:textSize="40sp"
-            app:layout_constraintEnd_toStartOf="@+id/bPlusBotCube"
-            app:layout_constraintTop_toBottomOf="@+id/bMinusTopCube" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bMinusSpeaker" />
 
         <Button
-            android:id="@+id/bPlusMidCube"
-            android:layout_width="50dp"
+            android:id="@+id/bMinusTrap"
+            android:layout_width="100dp"
             android:layout_height="80dp"
-            android:background="#9C27B0"
+            android:layout_marginStart="68dp"
+            android:background="#FF48B8C6"
+            android:onClick="clickMinusTrap"
+            android:text="-"
+            android:textColor="#FFFFFF"
+            android:textSize="40sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bMinusAmp" />
+
+        <Button
+            android:id="@+id/bPlusTrap"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginEnd="68dp"
+            android:background="#FBBD00"
             android:gravity="center"
-            android:onClick="clickPlusMidCube"
+            android:onClick="clickPlusTrap"
             android:text="+"
             android:textColor="#FFFFFF"
             android:textSize="40sp"
-            app:layout_constraintBottom_toTopOf="@+id/bPlusBotCube"
-            app:layout_constraintStart_toEndOf="@+id/bMinusMidCube" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/bPlusAmp" />
 
         <TextView
-            android:id="@+id/Ln1"
-            android:layout_width="0dp"
-            android:layout_height="6dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:background="#FFFFFF"
+            android:id="@+id/tAmp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:fontFamily="sans-serif-black"
+            android:text="Amp: 0"
+            android:textColor="#CDFFFFFF"
+            android:textSize="36sp"
+            app:layout_constraintEnd_toStartOf="@+id/bPlusSpeaker"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toEndOf="@+id/bMinusAmp"
+            app:layout_constraintTop_toBottomOf="@+id/tSpeaker" />
+
+        <Button
+            android:id="@+id/bPlusAmp"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="79dp"
+            android:layout_marginEnd="68dp"
+            android:background="#FBBD00"
+            android:gravity="center"
+            android:onClick="clickPlusAmp"
+            android:text="+"
+            android:textColor="#FFFFFF"
+            android:textSize="40sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/eScoutID" />
+            app:layout_constraintTop_toTopOf="@+id/bPlusSpeaker" />
 
-        <EditText
-            android:id="@+id/eDefenseRating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="32dp"
-            android:layout_marginBottom="12dp"
-            android:background="#FFFFFF"
-            android:backgroundTint="#FFFFFF"
-            android:ems="10"
-            android:inputType="text"
-            android:text="Defense Rating"
-            android:textAlignment="center"
-            app:layout_constraintBottom_toTopOf="@+id/rDefenseBar"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <RatingBar
-            android:id="@+id/rDefenseBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="148dp"
-            android:background="#000000"
-            android:backgroundTint="#FFFFFF"
-            app:layout_constraintBottom_toTopOf="@+id/bCard"
-            app:layout_constraintEnd_toEndOf="parent" />
+        <Button
+            android:id="@+id/bPlusSpeaker"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="68dp"
+            android:background="#FBBD00"
+            android:gravity="center"
+            android:onClick="clickPlusSpeaker"
+            android:text="+"
+            android:textColor="#FFFFFF"
+            android:textSize="40sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bInitiationLine" />
 
         <Switch
             android:id="@+id/sLeftCommunity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="96dp"
             android:onClick="clickCommunity"
             android:text="Left Community"
+            android:textColor="#FFFFFF"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/eTeamNumber" />
+
+        <Switch
+            android:id="@+id/sMelody"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="78dp"
+            android:layout_marginTop="6dp"
+            android:onClick="clickMelody"
+            android:text="Melody"
+            android:textColor="#FFFFFF"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bMatchPhase" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="20dp" />
+
+        <Switch
+            android:id="@+id/sSpotlight"
+            android:layout_width="121dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="52dp"
+            android:layout_marginTop="4dp"
+            android:text="Spotlight"
+            android:textColor="#FFFFFF"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sLeftCommunity" />
+
+        <VideoView
+            android:id="@+id/videoView4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="193dp"
+            android:layout_height="117dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="43dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bMinusCollect"
+            app:srcCompat="@drawable/snubnose" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="330dp"
+            android:layout_height="42dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="12dp"
+            android:text="Choose a number between 1-6"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/bRoullete3"
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
