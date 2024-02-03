@@ -434,11 +434,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void clickTarmac(View v){
         if(isAuto){
-            zAutoTarmac = (zAutoTarmac + 1)%4;
+            zAutoTarmac = (zAutoTarmac + 1)%3;
             updateBTarmac();
         }
         else{
-            zTarmac = (zTarmac + 1)%4;
+            zTarmac = (zTarmac + 1)%3;
             updateBTarmac();
         }
     }
