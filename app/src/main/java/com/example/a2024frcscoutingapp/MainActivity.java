@@ -21,6 +21,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+//import android.widget.ImageView;
 import android.widget.MediaController;
 import android.widget.RatingBar;
 import android.widget.Switch;
@@ -45,7 +46,7 @@ import java.util.Objects;
 import java.util.Random;
 
 //ignore all the commented out things :)
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements FileNotif {
 
 
     private VideoView vid;
@@ -77,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
     /////new variables
     private int trap;
 
-    private boolean spotlight;
+
 
     private boolean melody;
 
@@ -139,9 +140,10 @@ public class MainActivity extends AppCompatActivity {
     private Button bSave;
     private Button bRoullete1, bRoullete2, bRoullete3, bRoullete4, bRoullete5, bRoullete6;
 
-    private TextView tSpeaker, tAmp, tTrap, tCollect;
+    private TextView tSpeaker, tAmp, tTrap, tCollect, textView;
+    //private ImageView imageView;
 
-    private static boolean leftCommunity, zMelody;
+    private static boolean leftCommunity, zMelody, zSpotlight;
     
     private static int zMatchNumber, zScoutID, zAllianceColor,
             zTeamNumber,
@@ -179,7 +181,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int secretPurple = Color.argb(254, 179, 136, 255); //?
 
 
-    private String[] climbDisplayText = {"No Climb", "Climb", "Park"};
+    private String[] climbDisplayText = {"No Climb", "Park", "Climb", "Spotlight Climb"};
 
     private Map<Integer, List<String>> matchMap = new HashMap<>();
 
@@ -190,9 +192,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
-        String defaultValue = sharedPref.getString(FIlE_NAME_KEY, "PLEASE SET FILENAME");
-        setTitle(defaultValue);
+        readFileName();
         setContentView(R.layout.activity_main);
 
         lConstraint = findViewById(R.id.lConstraint);
@@ -205,7 +205,7 @@ public class MainActivity extends AppCompatActivity {
         //bAllianceColor = findViewById(R.id.bAllianceColor);
         bMatchPhase = findViewById(R.id.bMatchPhase);
         bTarmac = findViewById(R.id.bInitiationLine);
-        bPlusAmp = findViewById(R.id.bPlusSpeaker);
+        bPlusAmp = findViewById(R.id.bPlusAmp);
         bMinusAmp = findViewById(R.id.bMinusAmp);
         bMinusSpeaker = findViewById(R.id.bMinusSpeaker);
         bPlusSpeaker = findViewById(R.id.bPlusSpeaker);
@@ -218,15 +218,15 @@ public class MainActivity extends AppCompatActivity {
         bRoullete4 = findViewById(R.id.bRoullete4);
         bRoullete5 = findViewById(R.id.bRoullete5);
         bRoullete6 = findViewById(R.id.bRoullete6);
-
+        textView = findViewById(R.id.textView);
+        //imageView = findViewById(R.id.imageView);
         bRobotProblem = findViewById(R.id.bRobotProblem);
 
         bFoul = findViewById(R.id.bFoul);
         bPlusCollect = findViewById(R.id.bPlusCollect);
         bMinusCollect = findViewById(R.id.bMinusCollect);
         sLeftCommunity = findViewById(R.id.sLeftCommunity);
-        sSpotlight = findViewById(R.id.sSpotlight);
-        sMelody = findViewById(R.id.sMelody);
+
 
         bCard = findViewById(R.id.bCard);
         bSave = findViewById(R.id.bSave);
@@ -242,6 +242,12 @@ public class MainActivity extends AppCompatActivity {
         setAllElementEditability();
 
         matchMap = parseMatchFile();
+    }
+
+    private void readFileName() {
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        String defaultValue = sharedPref.getString(FIlE_NAME_KEY, "PLEASE SET FILENAME");
+        setTitle(defaultValue);
     }
 
     @Override
@@ -328,6 +334,7 @@ public class MainActivity extends AppCompatActivity {
             middleDisplayAmp = zAutoAmp;
             collect = zCollect;
 
+
         } else {
 
             upperDisplaySpeaker = zSpeaker;
@@ -336,9 +343,9 @@ public class MainActivity extends AppCompatActivity {
             collect = zCollect;
             
         }
-        tSpeaker.setText("Top = " + upperDisplaySpeaker);
-        tTrap.setText("Mid = " + lowerDisplayTrap);
-        tAmp.setText("Bot = " + middleDisplayAmp);
+        tSpeaker.setText("Speaker = " + upperDisplaySpeaker);
+        tTrap.setText("Trap = " + lowerDisplayTrap);
+        tAmp.setText("Amp = " + middleDisplayAmp);
         tCollect.setText("Collect: " + collect);
     }
 
@@ -355,12 +362,13 @@ public class MainActivity extends AppCompatActivity {
     }
     private void noMoreFun()
     {
-        bRoullete1.setVisibility(View.GONE);
-        bRoullete2.setVisibility(View.GONE);
-        bRoullete3.setVisibility(View.GONE);
-        bRoullete4.setVisibility(View.GONE);
-        bRoullete5.setVisibility(View.GONE);
-        bRoullete6.setVisibility(View.GONE);
+        bRoullete1.setVisibility(View.INVISIBLE);
+        bRoullete2.setVisibility(View.INVISIBLE);
+        bRoullete3.setVisibility(View.INVISIBLE);
+        bRoullete4.setVisibility(View.INVISIBLE);
+        bRoullete5.setVisibility(View.INVISIBLE);
+        bRoullete6.setVisibility(View.INVISIBLE);
+        textView.setVisibility(View.INVISIBLE);
     }
 
     private void moreFun()
@@ -371,6 +379,7 @@ public class MainActivity extends AppCompatActivity {
         bRoullete4.setVisibility(View.VISIBLE);
         bRoullete5.setVisibility(View.VISIBLE);
         bRoullete6.setVisibility(View.VISIBLE);
+        textView.setVisibility(View.VISIBLE);
     }
 
 
@@ -397,6 +406,8 @@ public class MainActivity extends AppCompatActivity {
                 isAuto = true;
                 saveEnabled = false;
                 lConstraint.setBackgroundColor(backgroundBlue);
+                sLeftCommunity.setVisibility(View.VISIBLE);
+                bTarmac.setVisibility(View.INVISIBLE);
                 updateBTarmac();
                 break;
 
@@ -412,6 +423,8 @@ public class MainActivity extends AppCompatActivity {
                 lConstraint.setBackgroundColor(backgroundBlack);
                 isAuto = false;
                 saveEnabled = true;
+                sLeftCommunity.setVisibility(View.INVISIBLE);
+                bTarmac.setVisibility(View.VISIBLE);
                 updateBTarmac();
                 break;
 
@@ -434,11 +447,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void clickTarmac(View v){
         if(isAuto){
-            zAutoTarmac = (zAutoTarmac + 1)%3;
+            zAutoTarmac = (zAutoTarmac + 1)% climbDisplayText.length;
             updateBTarmac();
         }
         else{
-            zTarmac = (zTarmac + 1)%3;
+            zTarmac = (zTarmac + 1)% climbDisplayText.length;
             updateBTarmac();
         }
     }
@@ -588,12 +601,12 @@ public class MainActivity extends AppCompatActivity {
     public void clickSpotlight(View v){
 
         if(isAuto) {
-            if (spotlight == false) {
-                spotlight = true;
+            if (zSpotlight == false) {
+                zSpotlight = true;
             } else {
-                spotlight = false;
+                zSpotlight = false;
             }
-            sSpotlight.setChecked(spotlight);
+            sSpotlight.setChecked(zSpotlight);
         }
     }
 
@@ -748,12 +761,9 @@ public class MainActivity extends AppCompatActivity {
             writeString(b, "score_amp_auto");
             writeString(b, "score_speaker_auto");
             writeString(b, "score_trap_auto");
-            writeString(b, "leave");
             writeString(b, "score_amp_tele");
             writeString(b, "score_speaker_tele");
             writeString(b, "score_trap_tele");
-            writeString(b, "Spotlight");
-            writeString(b, "Melody");
             writeString(b, "Climb");
             writeString(b, "Collect");
             writeString(b, "Robot Problem");
@@ -766,7 +776,9 @@ public class MainActivity extends AppCompatActivity {
             b.append("\n");
 
         }
-        String[] displayText = {"No Climb", "Park", "Climb"};
+
+        String[] displayText = {"No Climb", "Park", "Climb", "Spotlight Climb"};
+        int[] climbPoints = {0, 1, 3, 4};
         String[] displayTypeText = {"Offensive", "Transfer", "Defensive"};
         String[] displayTextProblem = {"No Robot Problem", "Broken Parts", "Dead Partially", "Dead All Match"};
         write(b, zMatchNumber);
@@ -779,15 +791,18 @@ public class MainActivity extends AppCompatActivity {
         write(b, zAmp);
         write(b, zSpeaker);
         write(b, zTrap);
-        writeBoolean(b, spotlight);
-        writeBoolean(b, zMelody);
-        writeString(b, displayText[zAutoTarmac]);
-
+        write(b, climbPoints[zTarmac]);
         write(b, zCollect);
         writeString(b, displayTextProblem[zRobotProblem]);
         write(b, zFoul);
         write(b, zCard);
-        writeBoolean(b, leftCommunity);
+        if (leftCommunity) {
+            write(b, 2);
+        }
+        else {
+            write(b, 0);
+        }
+        //writeBoolean(b, leftCommunity);
         //writeFloat(b, rDefenseBar.getRating());
         //writeString(b, strDefenseRating);
         //writeString(b, displayTypeText[zType]);
@@ -888,5 +903,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onFileChanged() {
+        readFileName();
+    }
 }
 //"a useless program created by Jonathan Chu" - Gavin Wan
