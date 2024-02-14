@@ -33,11 +33,10 @@ public class FileNameDialogFragment extends DialogFragment {
         //get the spinner from the xml
         Spinner eventNameDropdown = view.findViewById(R.id.event_name_spinner);
         List<String> eventNames = new ArrayList<>();
-        eventNames.add("glacier_peak");
-        eventNames.add("sammamish");
-        eventNames.add("cheyenne");
-        eventNames.add("pnw_champs");
-        eventNames.add("world_champs");
+        eventNames.add("auburn");
+        eventNames.add("bonny lake");
+        eventNames.add("potland");
+        //eventNames.add("world_champs"); fingers crossed
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, eventNames);
         eventNameDropdown.setAdapter(adapter);
@@ -61,11 +60,13 @@ public class FileNameDialogFragment extends DialogFragment {
                 .setPositiveButton("Save", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-                        String fileName = "2024 Cresendo" + (String) eventNameDropdown.getSelectedItem() + "_" + (String) tabletIdDropdown.getSelectedItem() + ".csv";
+                        String fileName = "2024 Crescendo_" + (String) eventNameDropdown.getSelectedItem() + "_" + (String) tabletIdDropdown.getSelectedItem() + ".csv";
                         SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPref.edit();
                         editor.putString(MainActivity.FIlE_NAME_KEY, fileName);
                         editor.apply();
+                        FileNotif notifier = (FileNotif) getActivity();
+                        notifier.onFileChanged();
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {

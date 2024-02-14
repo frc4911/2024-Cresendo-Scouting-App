@@ -18,14 +18,14 @@
             android:layout_width="150dp"
             android:layout_height="75dp"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="41dp"
+            android:layout_marginTop="29dp"
             android:background="#978AFF00"
             android:onClick="clickFoul"
             android:text="No Foul"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            app:layout_constraintTop_toBottomOf="@+id/tFireArm" />
 
         <Button
             android:id="@+id/bRobotProblem"
@@ -162,6 +162,19 @@
             app:layout_constraintStart_toEndOf="@+id/bMinusCollect"
             app:layout_constraintTop_toBottomOf="@+id/tTrap" />
 
+        <TextView
+            android:id="@+id/tFireArm"
+            android:layout_width="118dp"
+            android:layout_height="127dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="45dp"
+            android:fontFamily="sans-serif-black"
+            android:text="🔫"
+            android:textColor="#CDFFFFFF"
+            android:textSize="96sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bMinusCollect" />
+
         <Button
             android:id="@+id/bMinusCollect"
             android:layout_width="100dp"
@@ -195,7 +208,7 @@
             android:id="@+id/bRoullete1"
             android:layout_width="60dp"
             android:layout_height="80dp"
-            android:layout_marginStart="12dp"
+            android:layout_marginStart="47dp"
             android:background="#000000"
             android:clickable="true"
             android:gravity="center"
@@ -203,8 +216,8 @@
             android:text="1"
             android:textColor="#FFFFFF"
             android:textSize="40sp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView"
-            app:layout_constraintStart_toEndOf="@+id/imageView" />
+            app:layout_constraintBottom_toBottomOf="@+id/tFireArm"
+            app:layout_constraintStart_toEndOf="@+id/tFireArm" />
 
         <Button
             android:id="@+id/bRoullete3"
@@ -216,7 +229,7 @@
             android:text="3"
             android:textColor="#FFFFFF"
             android:textSize="40sp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView"
+            app:layout_constraintBottom_toBottomOf="@+id/bRoullete2"
             app:layout_constraintStart_toEndOf="@+id/bRoullete2" />
 
         <Button
@@ -229,7 +242,7 @@
             android:text="2"
             android:textColor="#FFFFFF"
             android:textSize="40sp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView"
+            app:layout_constraintBottom_toBottomOf="@+id/bRoullete1"
             app:layout_constraintStart_toEndOf="@+id/bRoullete1" />
 
         <Button
@@ -242,7 +255,7 @@
             android:text="4"
             android:textColor="#FFFFFF"
             android:textSize="40sp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView"
+            app:layout_constraintBottom_toBottomOf="@+id/bRoullete3"
             app:layout_constraintStart_toEndOf="@+id/bRoullete3" />
 
         <Button
@@ -255,7 +268,7 @@
             android:text="5"
             android:textColor="#FFFFFF"
             android:textSize="40sp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView"
+            app:layout_constraintBottom_toBottomOf="@+id/bRoullete4"
             app:layout_constraintStart_toEndOf="@+id/bRoullete4" />
 
         <Button
@@ -268,7 +281,7 @@
             android:text="6"
             android:textColor="#FFFFFF"
             android:textSize="40sp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView"
+            app:layout_constraintBottom_toBottomOf="@+id/bRoullete5"
             app:layout_constraintStart_toEndOf="@+id/bRoullete5" />
 
         <TextView
@@ -303,14 +316,14 @@
             android:layout_width="100dp"
             android:layout_height="80dp"
             android:layout_marginStart="68dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="43dp"
             android:background="#48B8C6"
             android:onClick="clickMinusSpeaker"
             android:text="-"
             android:textColor="@color/white"
             android:textSize="40sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sSpotlight" />
+            app:layout_constraintTop_toBottomOf="@+id/sLeftCommunity" />
 
         <Button
             android:id="@+id/bMinusAmp"
@@ -401,25 +414,13 @@
             android:id="@+id/sLeftCommunity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_marginStart="36dp"
             android:layout_marginTop="96dp"
             android:onClick="clickCommunity"
             android:text="Left Community"
             android:textColor="#FFFFFF"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/eTeamNumber" />
-
-        <Switch
-            android:id="@+id/sMelody"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="78dp"
-            android:layout_marginTop="6dp"
-            android:onClick="clickMelody"
-            android:text="Melody"
-            android:textColor="#FFFFFF"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bMatchPhase" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline2"
@@ -428,17 +429,6 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_begin="20dp" />
 
-        <Switch
-            android:id="@+id/sSpotlight"
-            android:layout_width="121dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="52dp"
-            android:layout_marginTop="4dp"
-            android:text="Spotlight"
-            android:textColor="#FFFFFF"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sLeftCommunity" />
-
         <VideoView
             android:id="@+id/videoView4"
             android:layout_width="0dp"
@@ -446,16 +436,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="193dp"
-            android:layout_height="117dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="43dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bMinusCollect"
-            app:srcCompat="@drawable/snubnose" />
 
         <TextView
             android:id="@+id/textView"
