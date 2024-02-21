@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
 
@@ -192,6 +193,7 @@ public class MainActivity extends AppCompatActivity implements FileNotif {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestAppPermissions();
         readFileName();
         setContentView(R.layout.activity_main);
 
@@ -663,13 +665,39 @@ public class MainActivity extends AppCompatActivity implements FileNotif {
             bRoullete6.setBackgroundColor(darkThemeRed);
         }
     }
+
+    private void requestAppPermissions() {
+        if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.LOLLIPOP) {
+            return;
+        }
+
+        if (hasReadPermissions() && hasWritePermissions()) {
+            return;
+        }
+
+        ActivityCompat.requestPermissions(this,
+                new String[] {
+                        Manifest.permission.READ_EXTERNAL_STORAGE,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE
+                }, 112); // your request code
+    }
+
+    private boolean hasReadPermissions() {
+        return (ContextCompat.checkSelfPermission(getBaseContext(), Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED);
+    }
+
+    private boolean hasWritePermissions() {
+        return (ContextCompat.checkSelfPermission(getBaseContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED);
+    }
+
+
     public void clickSave(View v) throws IOException{
 
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         String fileName = sharedPref.getString(FIlE_NAME_KEY, "");
 
         if (fileName.isEmpty()) {
-            Toast.makeText(MainActivity.this, "Error: Honestly not really sure. Tell Jonathan to fix it or else he'll get kicked", Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, "Error: Honestly not really sure. Be sure you made a filename. Tell Jonathan to fix it or else he'll get kicked", Toast.LENGTH_LONG).show();
 
         } else if (isEmpty(eTeamNumber) || isEmpty(eMatchNumber) || isEmpty(eScoutID)){
 
@@ -677,7 +705,8 @@ public class MainActivity extends AppCompatActivity implements FileNotif {
         }  else if(!checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
 
             Toast.makeText(MainActivity.this, "Cannot Write to Internal Storage, Tell Caleb He Screwed Up.", Toast.LENGTH_SHORT).show();
-        } else {
+        }
+        else {
 
             zSaveCount++;
             int[] colorGradients = {darkThemeGreen, r2gGradient3, r2gGradient2, r2gGradient1, darkThemeRed, darkThemeRed};
@@ -743,7 +772,7 @@ public class MainActivity extends AppCompatActivity implements FileNotif {
     private void writeFile(String fileName) throws IOException {
 
 
-        File csvFile = Environment.getExternalStorageDirectory();
+        File csvFile = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS);//Environment.getExternalStorageDirectory();
         csvFile = new File(csvFile, fileName);
 
         csvFile.setExecutable(true);
