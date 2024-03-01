@@ -7,7 +7,7 @@ import pandas as pd
 # One device at a time
 # enable debug mode on the device
 
-device_path = '/storage/emulated/0'
+device_path = '/storage/emulated/0/Documents'
 local_path = './csv_files' 
 current_directory = os.getcwd()
 os.chdir(current_directory)
