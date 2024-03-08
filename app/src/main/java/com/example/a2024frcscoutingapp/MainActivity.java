@@ -781,7 +781,7 @@ public class MainActivity extends AppCompatActivity implements FileNotif {
 
         BufferedWriter b = new BufferedWriter(new FileWriter(csvFile, true));
 
-        if(zMatchNumber == 1)
+        /*if(zMatchNumber == 1)
         {
             writeString(b, "MatchNumber");
             writeString(b, "ScoutID");
@@ -804,7 +804,7 @@ public class MainActivity extends AppCompatActivity implements FileNotif {
             //writeString(b, "Robot Type");
             b.append("\n");
 
-        }
+        }*/
 
         String[] displayText = {"No Climb", "Park", "Climb", "Spotlight Climb"};
         int[] climbPoints = {0, 1, 3, 4};

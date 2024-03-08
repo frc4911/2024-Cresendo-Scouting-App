@@ -62,7 +62,7 @@ if not os.path.exists(main_csv_path):
 else:
     main_df = pd.read_csv(main_csv_path, header=None, names=range(combined_df.shape[1]))  # Adjust column names to match combined_df
     main_df = pd.concat([main_df, combined_df], ignore_index=True)
-    main_df.to_csv(main_csv_path, index=False)
+    main_df.to_csv(main_csv_path, index=False, header=None)
 print("Combined data has been saved \n")
 # Ask the user if they want to delete the merged data
 delete_choice = input("Do you want to delete the merged data from both Kindle and the local path? (y/n): ").strip().lower()
